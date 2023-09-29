@@ -6,7 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from urllib.parse import quote
 
-bot = Bot(token="5401094560:AAESZEGOKDDVZJEHFele0NGeYEecMX46vr8")
+bot = Bot(token="your_token")
 dp = Dispatcher(bot)
 
 async def fetch_url(query):
@@ -18,7 +18,7 @@ async def fetch_url(query):
 def scrape_wikipedia_url(html):
     soup = BeautifulSoup(html, "html.parser")
     if soup.find("div", class_="noarticletext"):
-        return None  # Страница с таким названием не существует
+        return None  
     return soup.find("link", rel="canonical")["href"]
 
 async def send_wikipedia_article(message, query):
